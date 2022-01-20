@@ -1,0 +1,24 @@
+[{
+    "name": "Vegetarian",
+    "goodness": 0.7,
+    "category": "diet",
+    "effects": ["healthy", "ethical"]
+},
+{
+    "name": "Vegan",
+    "goodness": 0.9,
+    "category": "diet",
+    "effects": ["healthy", "ethical"]
+},
+{
+    "name": "Meat-Eater",
+    "goodness": 0.3,
+    "category": "diet",
+    "effects": ["sluggish", "unhealthy"]
+},
+{
+    "name": "Pescatarian",
+    "goodness": 0.6,
+    "category": "diet",
+    "effects": ["healthy"]
+}]

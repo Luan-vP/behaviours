@@ -1,0 +1,12 @@
+[{
+    "name": "Dave",
+    "behaviours": ["vegan", "lazy"]
+},
+{
+    "name": "Karen",
+    "behaviours": ["vegetarian", "active"]
+},
+{
+    "name": "Joanna",
+    "behaviours": ["studious", "pescatarian"]
+}]

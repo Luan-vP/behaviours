@@ -1,27 +1,44 @@
-from abc import ABC
+import json
 from dataclasses import dataclass
 import random
 from typing import List, Optional
 from behaviour import *
 
+# TODO: Enums for roles?
+
 @dataclass
 class Person:
+    '''A person has a name, and a list of behaviours'''
     name: str
-    behaviours: List[Behaviour]
+    behaviours: List[str]
 
     def speak(self) -> None:
-        behavioural_effects = [effect for behaviour in self.behaviours for effect in behaviour.effects]
-        print(f"I feel {random.sample(behavioural_effects, 1)[0]}")
+        '''Describe how the person feels based on their behaviours'''
+        selected_behaviour = random.choice(self.behaviours)
+        try:
+            print(f"{self.name} says: I feel {random.choice(behaviours_dict[selected_behaviour].effects)}")
+        except KeyError:
+            print(f"{self.name} says: I don't know how being {selected_behaviour} makes me feel")
+
+            # What could I do with yield here..? 
+            # yield from self.speak()
 
 
 def main() -> None:
     """
     Main function.
     """
+    with open('people.json') as people_file:
+        people = json.load(people_file)
+    
+    people_dict = {}
+    for person in people:
+        people_dict[person['name'].lower()] = Person(person['name'], person['behaviours'])
 
-    dave = Person(name="Dave", behaviours=[Vegan])
-    for i in range(10):
-        dave.speak()
+    print(people_dict)
+
+    for person in people_dict.keys():
+        people_dict[person].speak()
     
 
 if __name__ == "__main__":

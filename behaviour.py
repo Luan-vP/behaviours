@@ -1,20 +1,20 @@
 from abc import ABC
-from dataclasses import dataclass
+import json
+from dataclasses import *
 import random
 from typing import List, Optional
 
 @dataclass
-class Behaviour(ABC):
+class Behaviour:
 
     goodness: float
     category: str
     effects: List[str]
 
-class Vegan(Behaviour):
-    """
-    Vegan behaviour
-    """
+json_data = json.load(open('behaviours.json'))
 
-    goodness = 0.8
-    category = "diet"
-    effects = ["healthy", "ethical"]
+behaviours_dict = {}
+for behaviour in json_data:
+    behaviours_dict[behaviour['name'].lower()] = Behaviour(behaviour['goodness'], behaviour['category'], behaviour['effects'])
+
+print(behaviours_dict)
